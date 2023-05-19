@@ -8,6 +8,14 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+/**
+ * The biggest difference between ReplayingDecoder and ByteToMessageDecoder
+ * is that ReplayingDecoder allows you to implement the decode() and decodeLast()
+ * methods just like all required bytes were received already,
+ * rather than checking the availability of the required bytes.
+ *
+ * This is why there is no code, which checks if we received enough data about the RequestData
+ */
 public class RequestDecoder extends ReplayingDecoder<RequestData> {
 
     private final Charset charset = Charset.forName("UTF-8");
